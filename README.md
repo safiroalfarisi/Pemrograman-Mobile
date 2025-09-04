@@ -58,13 +58,13 @@ Persamaan operator Dart dijelaskan sebagai berikut:
     
 Untuk melakukan pengujian relasional, maka gunakan operator sebagai berikut:
     
-> memeriksa apakah operan kiri lebih besar dari operan kanan
+(>) memeriksa apakah operan kiri lebih besar dari operan kanan
     
-< memeriksa apakah operan kiri lebih kecil dari operan kanan
+(<) memeriksa apakah operan kiri lebih kecil dari operan kanan
     
->= memeriksa apakah operan kiri lebih besar dari atau sama dengan operan kanan
+(>=) memeriksa apakah operan kiri lebih besar dari atau sama dengan operan kanan
     
-<= memeriksa apakah operan kiri kurang dari atau sama dengan operan kanan
+(<=) memeriksa apakah operan kiri kurang dari atau sama dengan operan kanan
     
 Di Dart, tidak seperti Java dan bahasa lainnya, operator == tidak membandingkan referensi/alamat memori melainkan isi dari variabel tersebut.
     
