@@ -6,7 +6,8 @@ Absen : 27
 Soal 1
 Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut ini agar mendapatkan keluaran (output) sesuai yang diminta!
 Penyesuaian Kode
-[Modifikasi Kode awal](C:\Pemrograman-Mobile\Codelab02\src\soal1.dart)
+
+![Modifikasi Kode awal](C:\Pemrograman-Mobile\Codelab02\src\soal1.dart)
 Kode yang sudah saya sesuaikan akan memberikan hasil seperti gambar dibawah ini
 ![Hasil modifikasi kode awal](C:\Pemrograman-Mobile\Codelab02\result\soal1.jpg)
 
@@ -54,7 +55,6 @@ Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan La
     logika yang dibuat untuk pengecekan pada variable yang memastikan agar variable tersebut tidak memiliki nilai null, logika ini biasa dipakai untuk variable yang tidak diperbolehkan null.
 --Late Variable
     late variabel digunakan untuk kita membuat suatu variable tetapi dapat wajib diisi nantinya agar tidak ada error seperti sapaan aplikasi setelah kita login.
-Contoh Kode
-[Contoh kode penerapan Null Safety & Late Variable](C:\Pemrograman-Mobile\Codelab02\src\soal4.dart)
-Hasil
+
+![Contoh kode penerapan Null Safety & Late Variable](C:\Pemrograman-Mobile\Codelab02\src\soal4.dart)
 ![Hasil kode penerapan Null Safety & Late Variable](C:\Pemrograman-Mobile\Codelab02\result\soal4.jpg)
