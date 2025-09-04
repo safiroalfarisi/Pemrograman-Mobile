@@ -8,7 +8,7 @@ Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut
 Penyesuaian Kode
 
 ![Modifikasi Kode awal](C:\Pemrograman-Mobile\Codelab02\src\soal1.dart)
-Kode yang sudah saya sesuaikan akan memberikan hasil seperti gambar dibawah ini
+
 ![Hasil modifikasi kode awal](C:\Pemrograman-Mobile\Codelab02\result\soal1.jpg)
 
 Soal 2
@@ -57,4 +57,5 @@ Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan La
     late variabel digunakan untuk kita membuat suatu variable tetapi dapat wajib diisi nantinya agar tidak ada error seperti sapaan aplikasi setelah kita login.
 
 ![Contoh kode penerapan Null Safety & Late Variable](C:\Pemrograman-Mobile\Codelab02\src\soal4.dart)
+
 ![Hasil kode penerapan Null Safety & Late Variable](C:\Pemrograman-Mobile\Codelab02\result\soal4.jpg)
