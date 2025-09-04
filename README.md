@@ -26,18 +26,19 @@ Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gun
 
 --Arithmetic Operators
 
-+ untuk tambahan.
+(+) untuk tambahan.
     
-- untuk pengurangan.
+(-) untuk pengurangan.
     
-* untuk perkalian.
+(*) untuk perkalian.
     
-/ untuk pembagian.
+(/) untuk pembagian.
     
-~/ untuk pembagian bilangan bulat. Di Dart, setiap pembagian sederhana dengan / menghasilkan nilai double. Untuk mendapatkan nilai bilangan bulat, Anda perlu membuat semacam transformasi (yaitu, typecast) dalam bahasa pemrograman lain; namun Dart sudah mendukung untuk operasi ini.
-    % untuk operasi modulus (sisa bagi dari bilangan bulat).
+(~/) untuk pembagian bilangan bulat. Di Dart, setiap pembagian sederhana dengan / menghasilkan nilai double. Untuk mendapatkan nilai bilangan bulat, Anda perlu membuat semacam transformasi (yaitu, typecast) dalam bahasa pemrograman lain; namun Dart sudah mendukung untuk operasi ini.
+
+(%) untuk operasi modulus (sisa bagi dari bilangan bulat).
     
--expression untuk negasi (yang membalikkan suatu nilai).
+(-)expression untuk negasi (yang membalikkan suatu nilai).
     
 Dart juga menyediakan shortcut operator untuk menggabungkan variabel setelah operasi lainnya. Operator aritmatika atau shortcut operator adalah +=, -=, *=, /=, dan ~/=.
     
