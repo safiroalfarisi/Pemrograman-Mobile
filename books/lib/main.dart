@@ -11,14 +11,13 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Future Demo Firo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const FuturePage(),
     );
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class FuturePage extends StatefulWidget {
-  const FuturePage({ super.key });
+  const FuturePage({super.key});
 
   @override
   State<FuturePage> createState() => _FuturePageState();
@@ -35,8 +34,11 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
   late Completer completer;
+  bool isLoading = false; // ✅ penanda loading
 
-  // praktikum 1
+  // ------------------------
+  // PRAKTIKUM 1
+  // ------------------------
   // Future<Response> getData() async {
   //   const authority = 'www.googleapis.com';
   //   const path = '/books/v1/volumes/516Mae9ot04C';
@@ -44,33 +46,39 @@ class _FuturePageState extends State<FuturePage> {
   //   return http.get(url);
   // }
 
-  // praktikum 2
-  // Future<int> returnOneAsync() async {
-  //   await Future.delayed(const Duration(seconds: 3));
-  //   return 1;
-  // }
-  // Future<int> returnTwoAsync() async {
-  //   await Future.delayed(const Duration(seconds: 3));
-  //   return 2;
-  // }
-  // Future<int> returnThreeAsync() async {
-  //   await Future.delayed(const Duration(seconds: 3));
-  //   return 3;
-  // }
+  // ------------------------
+  // PRAKTIKUM 2
+  // ------------------------
+  Future<int> returnOneAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 1;
+  }
 
-  // Future count() async {
-  //   int total = 0;
-  //   total = await returnOneAsync();
-  //   total += await returnTwoAsync();
-  //   total += await returnThreeAsync();
-  //   setState(() {
-  //     result = total.toString();
-  //   });
-  // }
+  Future<int> returnTwoAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 2;
+  }
 
-  // praktikum 3
+  Future<int> returnThreeAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 3;
+  }
+
+  Future count() async {
+    int total = 0;
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    setState(() {
+      result = total.toString();
+    });
+  }
+
+  // ------------------------
+  // PRAKTIKUM 3
+  // ------------------------
   Future getNumber() {
-    completer = Completer<int> ();
+    completer = Completer<int>();
     // calculate();
     calculate2();
     return completer.future;
@@ -83,13 +91,55 @@ class _FuturePageState extends State<FuturePage> {
 
   calculate2() async {
     try {
-      await new Future.delayed(const Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 5));
       completer.complete(42);
     } catch (_) {
       completer.completeError({});
     }
   }
 
+  // ------------------------
+  // PRAKTIKUM 4
+  // ------------------------
+  // void returnFG() {
+  //   FutureGroup<int> futureGroup = FutureGroup<int>();
+  //   futureGroup.add(returnOneAsync());
+  //   futureGroup.add(returnTwoAsync());
+  //   futureGroup.add(returnThreeAsync());
+  //   futureGroup.close();
+  //   futureGroup.future.then((List<int> value) {
+  //     int total = 0;
+  //     for (var element in value) {
+  //       total += element;
+  //     }
+  //
+  //     setState(() {
+  //       result = total.toString();
+  //     });
+  //   });
+  // }
+  Future<void> returnFG() async {
+    final futures = Future.wait<int>([
+      returnOneAsync(),
+      returnTwoAsync(),
+      returnThreeAsync()
+    ]);
+
+    final List<int> value = await futures;
+
+    int total = 0;
+    for (var element in value) {
+      total += element;
+    }
+
+    setState(() {
+      result = total.toString();
+    });
+  }
+
+  // ------------------------
+  // UI
+  // ------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,34 +152,31 @@ class _FuturePageState extends State<FuturePage> {
             const Spacer(),
             ElevatedButton(
               child: const Text('Go'),
-              onPressed: () {
+              onPressed: () async {
+                // ✅ aktifkan loading saat tombol ditekan
                 setState(() {
-                  // count();
+                  isLoading = true;
+                  result = '';
                 });
-                // getData().then((value) {
-                //   // result = value.body.toString().substring(0, 450);
-                //   setState(() {
-                //     result = value.toString();
-                //   });
-                // }).catchError((_) {
-                //   result = 'An error occurred';
-                //   setState(() {});
-                // });
-                getNumber().then((value) {
-                  // result = value.body.toString().substring(0, 450);
-                  setState(() {
-                    result = value.toString();
-                  });
-                }).catchError((_) {
-                  result = 'An error occurred';
-                  setState(() {});
+
+                // --- kamu bisa pilih fungsi mana yang mau dijalankan di sini ---
+                // await count();        // PRAKTIKUM 2
+                // await getNumber();    // PRAKTIKUM 3
+                returnFG();        // PRAKTIKUM 4 (aktif sekarang)
+
+                // ✅ matikan loading setelah Future selesai
+                setState(() {
+                  isLoading = false;
                 });
               },
             ),
             const Spacer(),
             Text(result),
             const Spacer(),
-            const CircularProgressIndicator(),
+            // ✅ loading hanya muncul saat isLoading = true
+            isLoading
+                ? const CircularProgressIndicator()
+                : const SizedBox(height: 40),
             const Spacer(),
           ],
         ),
